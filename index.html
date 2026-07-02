@@ -288,6 +288,18 @@
     font-weight: bold !important;
     color: var(--nfl-blue) !important;
     font-size: 0.9rem !important;
+}
+/* Spielort-Styling - Fett und zentriert */
+.game-location {
+    display: block;      
+    width: 100%;         
+    text-align: center;  
+    font-size: 0.85rem;
+    color: var(--text-muted); /* Oder nutze hier var(--text-main), wenn es noch dunkler sein soll */
+    margin-top: -5px; 
+    margin-bottom: 15px;
+    font-style: normal;  /* Nicht kursiv */
+    font-weight: bold;   /* Hier wird der Text fett */
 }</style>
 </head>
 <body>
@@ -325,40 +337,42 @@
     <div id="week1" class="week-content active">
         
         <div class="game-card">
-            <div class="game-date">Donnerstag, 10. September 2026 • 02:20 Uhr (MESZ)</div>
-            <div class="matchup">
-                <div class="team">
-                    <img src="https://static.www.nfl.com/f_auto,h_100,dpr_2.0,q_auto,w_100/league/api/clubs/logos/SEA" alt="Seahawks Logo">
-                    <span class="team-name">Seattle Seahawks</span>
-                </div>
-                <div class="vs">vs.</div>
-                <div class="team">
-                    <img src="https://static.www.nfl.com/f_auto,h_100,dpr_2.0,q_auto,w_100/league/api/clubs/logos/NE" alt="Patriots Logo">
-                    <span class="team-name">New England Patriots</span>
-                </div>
-            </div>
-            <div class="broadcasters">
-                <a href="#" class="tv-link tv-us" target="_blank">📺 STREAM</a>
-            </div>
+    <div class="game-date">Donnerstag, 10. September 2026 • 02:20 Uhr (MESZ)</div>
+    <div class="matchup">
+        <div class="team">
+            <img src="https://static.www.nfl.com/f_auto,h_100,dpr_2.0,q_auto,w_100/league/api/clubs/logos/SEA" alt="Seahawks Logo">
+            <span class="team-name">Seattle Seahawks</span>
         </div>
+        <div class="vs">vs.</div>
+        <div class="team">
+            <img src="https://static.www.nfl.com/f_auto,h_100,dpr_2.0,q_auto,w_100/league/api/clubs/logos/NE" alt="Patriots Logo">
+            <span class="team-name">New England Patriots</span>
+        </div>
+    </div>
+    <div class="game-location">🏟️ Lumen Field, Seattle, Washington</div>
+    <div class="broadcasters">
+        <a href="#" class="tv-link tv-us" target="_blank">📺 STREAM</a>
+    </div>
+</div>
 
-        <div class="game-card">
-            <div class="game-date">Freitag, 11. September 2026 • 02:35 Uhr (MESZ)</div>
-            <div class="matchup">
-                <div class="team">
-                    <img src="https://static.www.nfl.com/f_auto,h_100,dpr_2.0,q_auto,w_100/league/api/clubs/logos/SF" alt="Seahawks Logo">
-                    <span class="team-name">San Francisco 49ers</span>
-                </div>
-                <div class="vs">vs.</div>
-                <div class="team">
-                    <img src="https://static.www.nfl.com/f_auto,h_100,dpr_2.0,q_auto,w_100/league/api/clubs/logos/LA" alt="Patriots Logo">
-                    <span class="team-name">Los Angeles Ram</span>
-                </div>
-            </div>
-            <div class="broadcasters">
-                <a href="#" class="tv-link tv-us" target="_blank">📺 STREAM</a>
-            </div>
+<div class="game-card">
+    <div class="game-date">Freitag, 11. September 2026 • 02:35 Uhr (MESZ)</div>
+    <div class="matchup">
+        <div class="team">
+            <img src="https://static.www.nfl.com/f_auto,h_100,dpr_2.0,q_auto,w_100/league/api/clubs/logos/SF" alt="Seahawks Logo">
+            <span class="team-name">San Francisco 49ers</span>
         </div>
+        <div class="vs">vs.</div>
+        <div class="team">
+            <img src="https://static.www.nfl.com/f_auto,h_100,dpr_2.0,q_auto,w_100/league/api/clubs/logos/LA" alt="Patriots Logo">
+            <span class="team-name">Los Angeles Ram</span>
+        </div>
+    </div>
+    <div class="game-location">🏟️ Melbourne Cricket Ground (MCG), Melbourne, Australien</div>
+    <div class="broadcasters">
+        <a href="#" class="tv-link tv-us" target="_blank">📺 STREAM</a>
+    </div>
+</div>
 
 <div class="games-container" style="display: flex; flex-direction: column; gap: 20px;">
 
@@ -376,6 +390,7 @@
                 <span class="team-name">Carolina Panthers</span>
             </div>
         </div>
+        <div class="game-location">🏟️ Bank of America Stadium, Charlotte, North Carolina</div>
         <div class="broadcasters">
             <a href="#" class="tv-link tv-us" target="_blank">📺 STREAM</a>
         </div>
@@ -395,6 +410,7 @@
                 <span class="team-name">Cincinnati Bengals</span>
             </div>
         </div>
+        <div class="game-location">🏟️ Paycor Stadium, Cincinnati, Ohio</div>
         <div class="broadcasters">
             <a href="#" class="tv-link tv-us" target="_blank">📺 STREAM</a>
         </div>
@@ -414,6 +430,7 @@
                 <span class="team-name">Detroit Lions</span>
             </div>
         </div>
+        <div class="game-location">🏟️ Ford Field, Detroit, Michigan</div>
         <div class="broadcasters">
             <a href="#" class="tv-link tv-us" target="_blank">📺 STREAM</a>
         </div>
@@ -433,6 +450,7 @@
                 <span class="team-name">Houston Texans</span>
             </div>
         </div>
+        <div class="game-location">🏟️ NRG Stadium, Houston, Texas</div>
         <div class="broadcasters">
             <a href="#" class="tv-link tv-us" target="_blank">📺 STREAM</a>
         </div>
@@ -452,6 +470,7 @@
                 <span class="team-name">Indianapolis Colts</span>
             </div>
         </div>
+        <div class="game-location">🏟️ Lucas Oil Stadium, Indianapolis, Indiana</div>
         <div class="broadcasters">
             <a href="#" class="tv-link tv-us" target="_blank">📺 STREAM</a>
         </div>
@@ -471,6 +490,7 @@
                 <span class="team-name">Jacksonville Jaguars</span>
             </div>
         </div>
+        <div class="game-location">🏟️ EverBank Stadium, Jacksonville, Florida</div>
         <div class="broadcasters">
             <a href="#" class="tv-link tv-us" target="_blank">📺 STREAM</a>
         </div>
@@ -490,6 +510,7 @@
                 <span class="team-name">Pittsburgh Steelers</span>
             </div>
         </div>
+        <div class="game-location">🏟️ Acrisure Stadium, Pittsburgh, Pennsylvania</div>
         <div class="broadcasters">
             <a href="#" class="tv-link tv-us" target="_blank">📺 STREAM</a>
         </div>
@@ -509,6 +530,7 @@
                 <span class="team-name">Tennessee Titans</span>
             </div>
         </div>
+        <div class="game-location">🏟️ Nissan Stadium, Nashville, Tennessee</div>
         <div class="broadcasters">
             <a href="#" class="tv-link tv-us" target="_blank">📺 STREAM</a>
         </div>
@@ -528,6 +550,7 @@
                 <span class="team-name">Los Angeles Chargers</span>
             </div>
         </div>
+        <div class="game-location">🏟️ SoFi Stadium, Inglewood (Los Angeles), Kalifornien</div>
         <div class="broadcasters">
             <a href="#" class="tv-link tv-us" target="_blank">📺 STREAM</a>
         </div>
@@ -547,6 +570,7 @@
                 <span class="team-name">Las Vegas Raiders</span>
             </div>
         </div>
+        <div class="game-location">🏟️ Allegiant Stadium, Las Vegas, Nevada</div>
         <div class="broadcasters">
             <a href="#" class="tv-link tv-us" target="_blank">📺 STREAM</a>
         </div>
@@ -566,6 +590,7 @@
                 <span class="team-name">Minnesota Vikings</span>
             </div>
         </div>
+        <div class="game-location">🏟️ U.S. Bank Stadium, Minneapolis, Minnesota</div>
         <div class="broadcasters">
             <a href="#" class="tv-link tv-us" target="_blank">📺 STREAM</a>
         </div>
@@ -585,6 +610,7 @@
                 <span class="team-name">Philadelphia Eagles</span>
             </div>
         </div>
+        <div class="game-location">🏟️ Lincoln Financial Field, Philadelphia, Pennsylvania</div>
         <div class="broadcasters">
             <a href="#" class="tv-link tv-us" target="_blank">📺 STREAM</a>
         </div>
