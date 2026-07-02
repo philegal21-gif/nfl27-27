@@ -279,15 +279,15 @@
             header h1 { font-size: 3rem; }
             .header-logo { height: 55px; }
         }
-    /* Countdown Styling */
-.game-date { 
-    font-size: 0.95rem; 
-    color: var(--nfl-red); 
-    margin-bottom: 15px; 
-    text-align: center; 
-    font-weight: bold; 
-    border-bottom: 2px solid #e2e8f0; 
-    padding-bottom: 10px; 
+/* Countdown Styling - Passt zum 3D Design */
+.countdown-timer {
+    display: block !important;
+    text-align: center !important;
+    width: 100% !important;
+    margin: 5px auto 10px auto !important;
+    font-weight: bold !important;
+    color: var(--nfl-blue) !important;
+    font-size: 0.9rem !important;
 }</style>
 </head>
 <body>
@@ -2439,16 +2439,24 @@
             evt.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         }
     </script>
-    <script>
+<script>
     function updateCountdowns() {
-        // Monat-Mapping für das Date-Objekt
         const months = { "September": 8, "Oktober": 9, "November": 10 }; 
         
-        // Gehe alle Elemente mit der Klasse "game-date" durch
-        document.querySelectorAll('.game-date').forEach(el => {
-            const text = el.innerText;
-            // Sucht nach dem Muster: "10. September 2026 • 02:20"
-            const match = text.match(/(\d{1,2})\.\s([A-Za-z]+)\s(\d{4})\s•\s(\d{2}):(\d{2})/);
+        document.querySelectorAll('.game-card').forEach(card => {
+            const dateEl = card.querySelector('.game-date');
+            if(!dateEl) return;
+            
+            // Countdown-Container erstellen, falls er noch nicht da ist
+            let timerEl = card.querySelector('.countdown-timer');
+            if (!timerEl) {
+                timerEl = document.createElement('div');
+                timerEl.className = 'countdown-timer';
+                dateEl.after(timerEl); // Setzt den Timer UNTER das Datum
+            }
+
+            // Datum aus dem Text lesen (z.B. "10. September 2026 • 02:20")
+            const match = dateEl.innerText.match(/(\d{1,2})\.\s([A-Za-z]+)\s(\d{4})\s•\s(\d{2}):(\d{2})/);
             
             if (match) {
                 const target = new Date(match[3], months[match[2]], match[1], match[4], match[5]);
@@ -2458,17 +2466,16 @@
                     const d = Math.floor(diff / 86400000);
                     const h = Math.floor((diff / 3600000) % 24);
                     const m = Math.floor((diff / 60000) % 60);
-                    el.innerHTML = `⏳ Kickoff in: ${d}d ${h}h ${m}m`;
-                } else if (diff > -10800000) { // Zeigt "Läuft" für 3 Stunden nach Start an
-                    el.innerHTML = "🔴 SPIEL LÄUFT";
+                    timerEl.innerHTML = `⏳ Kickoff in: ${d}d ${h}h ${m}m`;
+                } else if (diff > -10800000) {
+                    timerEl.innerHTML = "🔴 SPIEL LÄUFT";
                 } else {
-                    el.innerHTML = "🏁 BEENDET";
+                    timerEl.innerHTML = "🏁 BEENDET";
                 }
             }
         });
     }
 
-    // Countdown alle 60 Sekunden aktualisieren
     setInterval(updateCountdowns, 60000);
     updateCountdowns();
 </script>
