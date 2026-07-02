@@ -10,28 +10,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Teko:wght@500;700&display=swap" rel="stylesheet">
 
     <style>
-        :root {
-    /* Dein bestehendes Licht-Design */
+      :root {
+    /* --- LIGHT MODE --- */
     --nfl-blue: #013369;
     --nfl-red: #D50A0A;
-    --bg-color: #e2e8f0;
-    --card-bg: linear-gradient(145deg, #ffffff, #f0f0f0);
-    --text-main: #333333;
+    --bg-color: #e2e8f0;            /* Helles Grau */
+    --card-bg: #ffffff;             /* Karte ist weiß */
+    --text-main: #333333;           /* Dunkles Grau für Text */
     --text-muted: #666666;
-    --header-text: #ffffff;
-    /* ... bestehende Variablen ... */
+    --text-accent: #013369;         /* Dunkelblau für VS & Countdown */
+    
+    /* Tabs */
     --tab-bg: #f8fafc;
     --tab-text: #333333;
     --tab-border: #e2e8f0;
 }
+
 body.dark-mode {
-    /* WICHTIG: Hier definieren wir die Farben für den Dark Mode neu */
-    --bg-color: #1a202c;
-    --card-bg: linear-gradient(145deg, #2d3748, #262c3a);
-    --text-main: #f7fafc;
+    /* --- DARK MODE --- */
+    --bg-color: #1a202c;            /* Dunkles Blau-Grau */
+    --card-bg: #2d3748;             /* Dunkle Karte */
+    --text-main: #f7fafc;           /* Helles Weiß-Grau für Text */
     --text-muted: #cbd5e1;
+    --text-accent: #63b3ed;         /* Helles Blau für VS & Countdown */
     
-    /* Variablen für die Tabs */
+    /* Tabs */
     --tab-bg: #2d3748;
     --tab-text: #edf2f7;
     --tab-border: #4a5568;
@@ -236,11 +239,11 @@ body.dark-mode {
         }
 
         .vs {
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: var(--nfl-blue);
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--text-accent); /* Nutzt nun die umschaltbare Variable */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
 
         /* --- 3D SENDER LINKS --- */
         .broadcasters {
@@ -296,7 +299,7 @@ body.dark-mode {
     width: 100% !important;
     margin: 5px auto 10px auto !important;
     font-weight: bold !important;
-    color: var(--nfl-blue) !important;
+    color: var(--text-accent) !important; /* Nutzt nun die umschaltbare Variable */
     font-size: 0.9rem !important;
 }
 /* Spielort-Styling - Fett und zentriert */
