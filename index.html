@@ -354,6 +354,23 @@ body.dark-mode {
     background-color: var(--nfl-red);
     transform: scale(1.1);
 }
+      .filter-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#teamFilter {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 2px solid var(--nfl-blue);
+    background-color: var(--card-bg);
+    color: var(--text-main);
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 250px;
+    transition: all 0.3s;
+}
 </style>
 </head>
 <body>
@@ -390,7 +407,12 @@ body.dark-mode {
         <button class="tab-button" onclick="openWeek(event, 'week17')">Woche 17</button>
         <button class="tab-button" onclick="openWeek(event, 'week18')">Woche 18</button>
     </div>
-
+<div class="filter-container">
+    <select id="teamFilter">
+        <option value="all">Alle Teams anzeigen</option>
+        <!-- Die Teams werden hier automatisch eingefügt -->
+    </select>
+</div>
     <div id="week1" class="week-content active">
         
         <div class="game-card">
@@ -2606,6 +2628,43 @@ body.dark-mode {
                 });
             });
         }
+    });
+</script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const filterSelect = document.getElementById('teamFilter');
+        const teamNames = document.querySelectorAll('.team-name');
+        const teams = new Set();
+
+        // 1. Alle Teamnamen sammeln (ohne Duplikate)
+        teamNames.forEach(t => teams.add(t.innerText));
+
+        // 2. Dropdown befüllen
+        Array.from(teams).sort().forEach(team => {
+            const option = document.createElement('option');
+            option.value = team;
+            option.textContent = team;
+            filterSelect.appendChild(option);
+        });
+
+        // 3. Filter-Logik
+        filterSelect.addEventListener('change', (e) => {
+            const selectedTeam = e.target.value;
+            const cards = document.querySelectorAll('.game-card');
+
+            cards.forEach(card => {
+                if (selectedTeam === 'all') {
+                    card.style.display = 'block';
+                } else {
+                    // Check, ob der Teamname im Text der Karte vorkommt
+                    if (card.innerText.includes(selectedTeam)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        });
     });
 </script>
 <button id="scrollTopBtn" title="Nach oben">↑</button>
