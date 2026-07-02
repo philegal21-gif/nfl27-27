@@ -318,7 +318,7 @@ body.dark-mode {
 }
 /* Scroll-to-Top Button Design */
 #scrollTopBtn {
-    display: none; /* Bleibt unsichtbar bis zum Scrollen */
+    display: none; 
     position: fixed;
     bottom: 30px;
     right: 30px;
@@ -328,12 +328,12 @@ body.dark-mode {
     border: none;
     cursor: pointer;
     
-    /* Perfekter Kreis */
+    /* Maße für einen perfekten Kreis */
     width: 50px;
     height: 50px;
     border-radius: 50%;
     
-    /* Pfeil zentrieren */
+    /* Pfeil perfekt zentrieren */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -341,7 +341,7 @@ body.dark-mode {
     font-size: 20px;
     font-weight: bold;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    transition: opacity 0.3s, background-color 0.3s, transform 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 #scrollTopBtn:hover {
@@ -2588,18 +2588,17 @@ body.dark-mode {
     document.addEventListener('DOMContentLoaded', () => {
         const topBtn = document.getElementById('scrollTopBtn');
 
-        // Prüfen, ob der Button existiert
-        if (topBtn) {
-            // Scroll-Überwachung
-            wwindow.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-        topBtn.style.display = 'flex'; // Hier 'flex' statt 'block'
-    } else {
-        topBtn.style.display = 'none';
-    }
-});
+        // Scroll-Überwachung
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                topBtn.style.display = 'flex'; // WICHTIG: Hier muss 'flex' stehen
+            } else {
+                topBtn.style.display = 'none';
+            }
+        });
 
-            // Klick-Aktion
+        // Klick-Aktion (mit Sicherheitsprüfung)
+        if (topBtn) {
             topBtn.addEventListener('click', () => {
                 window.scrollTo({
                     top: 0,
