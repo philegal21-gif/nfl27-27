@@ -371,6 +371,17 @@ body.dark-mode {
     width: 250px;
     transition: all 0.3s;
 }
+      /* Highlight-Stil für Top-Spiele */
+.game-card.highlight {
+    border-top: 3px solid #FFD700; /* Goldener oberer Rand */
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3), 0 10px 20px rgba(0,0,0,0.08);
+    background: linear-gradient(145deg, #ffffff, #fdf6e3); /* Leichte goldene Tönung im Light Mode */
+}
+
+/* Anpassung für den Dark Mode */
+body.dark-mode .game-card.highlight {
+    background: linear-gradient(145deg, #2d3748, #3a3215); /* Dunkler Gold-Ton für Dark Mode */
+}
 </style>
 </head>
 <body>
@@ -676,7 +687,7 @@ body.dark-mode {
     </div>
 
     <!-- Spiel 12: Commanders vs. Eagles -->
-    <div class="game-card">
+    <div class="game-card highlight">
         <div class="game-date">Sonntag, 13. September 2026 • 22:25 Uhr (MESZ)</div>
         <div class="matchup">
             <div class="team">
@@ -855,7 +866,7 @@ body.dark-mode {
     </div>
 
     <!-- Spiel 9: Eagles vs. Titans -->
-    <div class="game-card">
+    <div class="game-card highlight">
         <div class="game-date">Sonntag, 20. September 2026 • 19:00 Uhr (MESZ)</div>
         <div class="matchup">
             <div class="team">
@@ -1435,7 +1446,7 @@ body.dark-mode {
         </div>
 
         <!-- Spiel 9: Rams vs. Eagles -->
-        <div class="game-card">
+        <div class="game-card highlight">
             <div class="game-date">Sonntag, 4. Oktober 2026 • 19:00 Uhr (MESZ)</div>
             <div class="matchup">
                 <div class="team">
@@ -1611,7 +1622,7 @@ body.dark-mode {
         </div>
 
         <!-- Spiel 2: Eagles vs. Jaguars (International Game - London) -->
-        <div class="game-card">
+        <div class="game-card highlight">
             <div class="game-date">Sonntag, 11. Oktober 2026 • 15:30 Uhr (MESZ) • 🗺️ London</div>
             <div class="matchup">
                 <div class="team">
@@ -2030,7 +2041,7 @@ body.dark-mode {
         </div>
 
         <!-- Spiel 8: Panthers vs. Eagles -->
-        <div class="game-card">
+        <div class="game-card highlight">
             <div class="game-date">Sonntag, 18. Oktober 2026 • 19:00 Uhr (MESZ)</div>
             <div class="matchup">
                 <div class="team">
@@ -2438,7 +2449,7 @@ body.dark-mode {
         </div>
 
         <!-- Spiel 14: Cowboys vs. Eagles (Monday Night) -->
-        <div class="game-card">
+        <div class="game-card highlight">
             <div class="game-date">Dienstag, 27. Oktober 2026 • 01:15 Uhr (MEZ)</div>
             <div class="matchup">
                 <div class="team">
@@ -2665,6 +2676,33 @@ body.dark-mode {
                 }
             });
         });
+    });
+</script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Saisonstart: 10. September 2026 (Monat 8, da JS bei 0 anfängt)
+        const seasonStart = new Date(2026, 8, 10); 
+        const today = new Date();
+        
+        let targetWeek = 1; // Standard-Start: Woche 1
+
+        // Nur rechnen, wenn die Saison bereits begonnen hat
+        if (today >= seasonStart) {
+            const diffTime = today - seasonStart;
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+            targetWeek = Math.floor(diffDays / 7) + 1;
+            
+            // Sicherstellen, dass wir nicht über Woche 18 hinausgehen
+            if (targetWeek > 18) targetWeek = 18;
+        }
+
+        // Suche den Button, der die richtige Woche öffnet
+        const btn = document.querySelector(`button[onclick="openWeek(event, 'week${targetWeek}')"]`);
+        
+        // Wenn der Button gefunden wurde, löse den Klick aus
+        if (btn) {
+            btn.click();
+        }
     });
 </script>
 <button id="scrollTopBtn" title="Nach oben">↑</button>
